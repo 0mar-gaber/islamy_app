@@ -65,8 +65,8 @@ class _SuraDetailsState extends State<SuraDetails> {
                       child: lines.isNotEmpty
                       ?ListView.separated(
                         itemBuilder: (context, index) => Text(
-                          " ${lines[index]}",
-                          textAlign: TextAlign.end,
+                          textDirection: TextDirection.rtl,
+                          " ${(lines[index])+"(${index + 1})"}",
                           style: const TextStyle(
                             fontSize: 30
                           ),
