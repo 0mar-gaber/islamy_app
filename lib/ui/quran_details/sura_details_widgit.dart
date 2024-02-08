@@ -60,14 +60,15 @@ class _SuraDetailsState extends State<SuraDetails> {
                   Container(height: 3,color: Theme.of(context).colorScheme.primary,width:MediaQuery.of(context).size.width*.7),
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.only(top: 5),
                       margin: EdgeInsets.only( right:MediaQuery.of(context).size.width*0.033 ,left: MediaQuery.of(context).size.width*0.033),
                       child: lines.isNotEmpty
                       ?ListView.separated(
                         itemBuilder: (context, index) => Text(
                           textDirection: TextDirection.rtl,
-                          " ${(lines[index])+"(${index + 1})"}",
+                          "${lines[index]}(${index+1})",
                           style: const TextStyle(
+                            fontFamily: "DTHULUTH",
                             fontSize: 30
                           ),
                         ),
@@ -93,9 +94,15 @@ class _SuraDetailsState extends State<SuraDetails> {
   loadSuraContent(int index) async {
     String suraContent =  await rootBundle.loadString("assets/texts/${index+1}.txt");
     lines = suraContent.split("\n");
+
+    lines.removeWhere((line) => line.trim().isEmpty); //to remove extra lines in end
+
+
+
     setState(() {
 
     });
+
   }
 }
 

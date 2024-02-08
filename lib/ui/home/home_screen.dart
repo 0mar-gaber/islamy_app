@@ -36,14 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
         body: navWidgets[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
-          onTap: onTab,
+
             items: [
               BottomNavigationBarItem(icon: Image.asset("assets/icons/icon_quran.png",),label: "Quran",backgroundColor: Theme.of(context).colorScheme.primary),
               BottomNavigationBarItem(icon: Image.asset("assets/icons/icon_sebha.png",),label: "Sebha",backgroundColor: Theme.of(context).colorScheme.primary),
               BottomNavigationBarItem(icon: Image.asset("assets/icons/icon_hadeth.png",),label: "Ahadeth",backgroundColor: Theme.of(context).colorScheme.primary),
               BottomNavigationBarItem(icon: Image.asset("assets/icons/icon_radio.png",),label: "Radio",backgroundColor: Theme.of(context).colorScheme.primary),
-
-        ]
+        ],
+          onTap: onTab,
         ),
       ),
     );

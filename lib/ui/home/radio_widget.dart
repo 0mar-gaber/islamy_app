@@ -5,6 +5,38 @@ class Radioo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Container(color: Colors.black),);
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+                margin: EdgeInsets.only(top: MediaQuery.of(context).size.width*0.4),
+                child: Image(image: AssetImage("assets/image/radio_image.png"))),
+            SizedBox(height: MediaQuery.of(context).size.width*0.08,),
+            Text("إذاعة القرآن الكريم",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize:  MediaQuery.of(context).size.width*0.05
+              ),
+            ),
+            SizedBox(height: MediaQuery.of(context).size.width*0.08,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(onPressed: (){}, iconSize: MediaQuery.of(context).size.width*0.1,icon: Icon(Icons.skip_previous_rounded,color: Theme.of(context).colorScheme.primary,)),
+                SizedBox(width: 15,),
+                IconButton(onPressed: (){}, iconSize: MediaQuery.of(context).size.width*0.1,icon: Icon(Icons.play_arrow_rounded,color: Theme.of(context).colorScheme.primary)),
+                SizedBox(width: 15,),
+                IconButton(onPressed: (){}, iconSize: MediaQuery.of(context).size.width*0.1,icon: Icon(Icons.skip_next_rounded  ,color: Theme.of(context).colorScheme.primary)),
+              ],
+            )
+
+
+
+
+          ],
+        ),
+      ),
+    );
   }
 }

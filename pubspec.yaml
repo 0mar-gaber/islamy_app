@@ -92,6 +92,19 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+  fonts:
+    - family: ElMessiri-SemiBold
+      fonts:
+        - asset: assets/fonts/ElMessiri-SemiBold.ttf
+    - family: DTHULUTH
+      fonts:
+        - asset: assets/fonts/DTHULUTH.TTF
+    - family: JF_Flat_regular
+      fonts:
+        - asset: assets/fonts/JF Flat regular.otf
+    - family: KOUFIBD
+      fonts:
+        - asset: assets/fonts/KOUFIBD.TTF
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/ui/ahadeth_details/ahadeth_details_widgit.dart';
 import 'package:islamy/ui/home/home_screen.dart';
 import 'package:islamy/ui/quran_details/sura_details_widgit.dart';
 
@@ -37,7 +38,8 @@ class IslamyApp extends StatelessWidget {
       ),
       routes: {
         HomeScreen.route:(context)=>const HomeScreen(),
-        SuraDetails.route:(context)=> SuraDetails(),
+        SuraDetails.route:(context)=> const SuraDetails(),
+        AhadethDetailsWidget.route:(context)=> AhadethDetailsWidget(),
       },
       initialRoute: HomeScreen.route,
     );

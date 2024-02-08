@@ -1,18 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+void main() {
+  int x = 0 ;
+  add(x);
 
-class Test extends StatelessWidget {
-  const Test({super.key});
+}
+add(int x){
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Text("data"),
-        ],
-      )
-    );
-  }
+  x++;
+  print(x);
 }
