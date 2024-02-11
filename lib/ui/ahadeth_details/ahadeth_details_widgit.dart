@@ -18,8 +18,6 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
     if(ahadeth.isEmpty){
       loadAhadethContent(index2);
     }
-    // List<String> hadethLines = ahadeth[index2] as List<String> ;
-    // print(hadethLines);
 
 
     return Container(
@@ -85,7 +83,6 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
 
     String ahadethContent = await rootBundle.loadString("assets/texts/ahadeth.txt");
     ahadeth = ahadethContent.split("#");
-    print(ahadeth[index]);
     setState(() {
 
     });

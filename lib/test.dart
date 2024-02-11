@@ -1,10 +1,14 @@
-void main() {
-  int x = 0 ;
-  add(x);
+import 'package:flutter/material.dart';
 
-}
-add(int x){
+class Test extends StatelessWidget {
+  const Test({super.key});
 
-  x++;
-  print(x);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Image(image: AssetImage("assets/image/body_of_seb7a.png")),
+      ),
+    );
+  }
 }

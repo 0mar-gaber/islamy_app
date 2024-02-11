@@ -8,13 +8,26 @@ class Sebha extends StatefulWidget {
 }
 
 class _SebhaState extends State<Sebha> {
+  double rotateAngle = 0;
   int counter = 0  ;
+  List<String> sebhaTitle = ["سبحان الله","الحمد لله","الله اكبر"] ;
+  int i = 0 ;
   onSeb7aClicked(){
     setState(() {
-      counter++;
+      rotateAngle+=90;
+      if(counter<33){
+        counter++;
+      }else {
+        counter=0;
+        if(i<2){
+          i++;
+
+        }else{
+          i=0;
+        }
+      }
 
     });
-    print(counter);
   }
 
   @override
@@ -26,8 +39,16 @@ class _SebhaState extends State<Sebha> {
             Container(
               margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.08,top:  MediaQuery.of(context).size.width*0.2),
                 child: Image(image: AssetImage("assets/image/head_sebha_logo.png"))),
-            Container(
-                child: Image(image: AssetImage("assets/image/body_of_seb7a.png"))),
+            GestureDetector(
+              onTap: () {
+                onSeb7aClicked();
+              },
+              child: Transform.rotate(
+                angle: rotateAngle * (3.14/1800),
+                child: Container(
+                    child: Image(image: AssetImage("assets/image/body_of_seb7a.png"))),
+              ),
+            ),
             SizedBox(height: MediaQuery.of(context).size.width*0.08,),
             Text("عدد التسبيحات",
               style: TextStyle(
@@ -52,29 +73,26 @@ class _SebhaState extends State<Sebha> {
                 ),
               )
               ),
-            ),
+            ),// counter
             SizedBox(height: MediaQuery.of(context).size.width*0.05,),
-            InkWell(
-              onTap: onSeb7aClicked,
-              child: Container(
-                width:  MediaQuery.of(context).size.width*0.2,
-                height:  MediaQuery.of(context).size.width*0.07,
-                decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary,
-                    borderRadius: BorderRadius.circular(40)
-                ),
-                child: Center(child: Text(
-                  "سبحان الله",
-                  style: TextStyle(
-                      fontSize:  MediaQuery.of(context).size.width*0.034,
-                      fontFamily:"KOUFIBD",
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white
-                  ),
-                )
-                ),
+            Container(
+              width:  MediaQuery.of(context).size.width*0.2,
+              height:  MediaQuery.of(context).size.width*0.07,
+              decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  borderRadius: BorderRadius.circular(40)
               ),
-            ),
+              child: Center(child: Text(
+                sebhaTitle[i],
+                style: TextStyle(
+                    fontSize:  MediaQuery.of(context).size.width*0.034,
+                    fontFamily:"KOUFIBD",
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white
+                ),
+              )
+              ),
+            ), // سبحان الله
 
 
 
