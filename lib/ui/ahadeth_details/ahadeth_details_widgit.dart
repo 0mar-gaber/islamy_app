@@ -38,14 +38,18 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
               margin: EdgeInsets.all(MediaQuery.of(context).size.width*.07),
               child: Column(
                 children: [
-                  Text("${(index2+1)} الحديث رقم ",
+                  Text(
+                    titles[index].trim().toString(),
                     style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width*0.07,
+                      fontSize: MediaQuery.of(context).size.width*0.05,
                       fontWeight: FontWeight.w900,
+                      fontFamily: "KOUFIBD"
 
                     ),
                   ),
+                  SizedBox(height: 10,),
                   Container(height: 3,color: Theme.of(context).colorScheme.primary,width:MediaQuery.of(context).size.width*.7),
+                  SizedBox(height: 10,),
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.only(top: 5),
@@ -54,10 +58,11 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
                           ?ListView.separated(
                         itemBuilder: (context, index) => Text(
                           textDirection: TextDirection.rtl,
-                          "${ahadeth[index2]}",
+                          "${content[index2]}",
                           style: const TextStyle(
                               fontFamily: "DTHULUTH",
-                              fontSize: 30
+                              fontSize: 40,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                         itemCount: 1,
@@ -78,11 +83,21 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
   }
 
   List<String> ahadeth = [];
+  List<String> titles= [];
+  List<String> content= [];
 
   loadAhadethContent(int index) async {
 
     String ahadethContent = await rootBundle.loadString("assets/texts/ahadeth.txt");
-    ahadeth = ahadethContent.split("#");
+    ahadeth = ahadethContent.trim().split("#");
+    for(int i = 0 ; i  <ahadeth.length-1; i++) {
+
+      List<String> list = ahadeth[i].toString().trim().split("\n");
+      titles.add(list.first);
+      list.removeAt(0);
+      content.add(list.toString());
+    }
+
     setState(() {
 
     });
