@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamy/theme_style/app_theme.dart';
+
 
 class AhadethDetailsWidget extends StatefulWidget {
   static const String route = "Ahadeth_details";
@@ -21,15 +23,15 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
 
 
     return Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage("assets/image/background.png"),fit: BoxFit.fill)
+      decoration:  BoxDecoration(
+          image: DecorationImage(image: AssetImage(AppTheme.isDark?"assets/image/darkback.png":"assets/image/background.png"),fit: BoxFit.fill)
       ),
       child: Scaffold(
         appBar: AppBar(title: const Text("Islamy")),
         body: Center(
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8),
+                color: Theme.of(context).colorScheme.errorContainer,
                 borderRadius: BorderRadius.circular(40)
             ),
             width: MediaQuery.of(context).size.width*0.9,
@@ -43,12 +45,13 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
                     style: TextStyle(
                       fontSize: MediaQuery.of(context).size.width*0.05,
                       fontWeight: FontWeight.w900,
-                      fontFamily: "KOUFIBD"
+                      fontFamily: "KOUFIBD",
+                      color: Theme.of(context).colorScheme.onErrorContainer
 
                     ),
                   ),
                   SizedBox(height: 10,),
-                  Container(height: 3,color: Theme.of(context).colorScheme.primary,width:MediaQuery.of(context).size.width*.7),
+                  Container(height: 3,color: Theme.of(context).colorScheme.onErrorContainer,width:MediaQuery.of(context).size.width*.7),
                   SizedBox(height: 10,),
                   Expanded(
                     child: Container(
@@ -59,10 +62,11 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
                         itemBuilder: (context, index) => Text(
                           textDirection: TextDirection.rtl,
                           "${content[index2]}",
-                          style: const TextStyle(
+                          style:  TextStyle(
                               fontFamily: "DTHULUTH",
                               fontSize: 40,
-                            fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).colorScheme.onErrorContainer
                           ),
                         ),
                         itemCount: 1,

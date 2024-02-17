@@ -13,8 +13,8 @@ class QuranNameVerse extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(verse,style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w900,fontFamily: "KOUFIBD")),
-            Text(name,style: const TextStyle(fontSize: 30,fontWeight: FontWeight.w900,fontFamily: "KOUFIBD"),),
+            Text(verse,style:  TextStyle(fontSize: 30,fontWeight: FontWeight.w900,color: Theme.of(context).colorScheme.onPrimary,fontFamily: "KOUFIBD")),
+            Text(name, style:  TextStyle(fontSize: 30,fontWeight: FontWeight.w900,color: Theme.of(context).colorScheme.onPrimary,fontFamily: "KOUFIBD"),),
           ]
       ),
     );

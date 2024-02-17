@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/theme_style/app_theme.dart';
 
 class Sebha extends StatefulWidget {
   const Sebha({super.key});
@@ -38,21 +39,20 @@ class _SebhaState extends State<Sebha> {
           children: [
             Container(
               margin: EdgeInsets.only(left: MediaQuery.of(context).size.width*0.08,top:  MediaQuery.of(context).size.width*0.2),
-                child: Image(image: AssetImage("assets/image/head_sebha_logo.png"))),
+                child:  Image(image: AssetImage(AppTheme.isDark?"assets/image/dark_head_of_seb7a.png":"assets/image/head_sebha_logo.png"))),
             GestureDetector(
               onTap: () {
                 onSeb7aClicked();
               },
               child: Transform.rotate(
                 angle: rotateAngle * (3.14/1800),
-                child: Container(
-                    child: Image(image: AssetImage("assets/image/body_of_seb7a.png"))),
+                child:  Image(image: AssetImage(AppTheme.isDark?"assets/image/dark_body_of_seb7a.png":"assets/image/body_of_seb7a.png")),
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.width*0.08,),
             Text("عدد التسبيحات",
               style: TextStyle(
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontSize:  MediaQuery.of(context).size.width*0.05
               ),
             ),
@@ -61,7 +61,7 @@ class _SebhaState extends State<Sebha> {
               width:  MediaQuery.of(context).size.width*0.1,
               height:  MediaQuery.of(context).size.width*0.12,
               decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: Theme.of(context).colorScheme.error,
                   borderRadius: BorderRadius.circular(30)
               ),
               child: Center(child: Text(
@@ -69,7 +69,8 @@ class _SebhaState extends State<Sebha> {
                 style: TextStyle(
                     fontSize:  MediaQuery.of(context).size.width*0.03,
                     fontFamily:"KOUFIBD",
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onPrimary
                 ),
               )
               ),
@@ -79,7 +80,7 @@ class _SebhaState extends State<Sebha> {
               width:  MediaQuery.of(context).size.width*0.2,
               height:  MediaQuery.of(context).size.width*0.07,
               decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.tertiary,
                   borderRadius: BorderRadius.circular(40)
               ),
               child: Center(child: Text(
@@ -88,7 +89,7 @@ class _SebhaState extends State<Sebha> {
                     fontSize:  MediaQuery.of(context).size.width*0.034,
                     fontFamily:"KOUFIBD",
                     fontWeight: FontWeight.w900,
-                    color: Colors.white
+                    color: Theme.of(context).colorScheme.onSecondary,
                 ),
               )
               ),

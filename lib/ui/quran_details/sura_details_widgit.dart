@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamy/theme_style/app_theme.dart';
 
 class SuraDetails extends StatefulWidget {
   static const String route = "sura_details";
@@ -18,15 +19,15 @@ class _SuraDetailsState extends State<SuraDetails> {
       loadSuraContent(sura.index);
     }
     return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(image: AssetImage("assets/image/background.png"),fit: BoxFit.fill)
+      decoration:  BoxDecoration(
+          image: DecorationImage(image: AssetImage(AppTheme.isDark?"assets/image/darkback.png":"assets/image/background.png"),fit: BoxFit.fill)
       ),
       child: Scaffold(
         appBar: AppBar(title: const Text("Islamy")),
         body: Center(
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.8),
+              color: Theme.of(context).colorScheme.errorContainer,
               borderRadius: BorderRadius.circular(40)
             ),
             width: MediaQuery.of(context).size.width*0.9,
@@ -42,34 +43,36 @@ class _SuraDetailsState extends State<SuraDetails> {
                         style: TextStyle(
                           fontSize: MediaQuery.of(context).size.width*0.07,
                           fontWeight: FontWeight.w900,
+                          color: Theme.of(context).colorScheme.onErrorContainer
 
                         ),
                       ),
                       const SizedBox(width: 120,),
                       Container(
                         margin: const EdgeInsets.only(top: 10),
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.black,
-                          child:Icon(Icons.play_arrow,color: Colors.white,size: 33),
+                        child:  CircleAvatar(
+                          backgroundColor: Theme.of(context).colorScheme.onErrorContainer,
+                          child:Icon(Icons.play_arrow,color: Theme.of(context).colorScheme.onSecondary,size: 33),
                         ),
                       ),
                       const SizedBox(width: 50,),
 
                     ],
                   ),
-                  Container(height: 3,color: Theme.of(context).colorScheme.primary,width:MediaQuery.of(context).size.width*.7),
+                  Container(height: 3,color: Theme.of(context).colorScheme.tertiary,width:MediaQuery.of(context).size.width*.7),
                   Expanded(
                     child: Container(
-                      padding: const EdgeInsets.only(top: 5),
+                      padding:  EdgeInsets.only(top: MediaQuery.of(context).size.width*0.033),
                       margin: EdgeInsets.only( right:MediaQuery.of(context).size.width*0.033 ,left: MediaQuery.of(context).size.width*0.033),
                       child: lines.isNotEmpty
                       ?ListView.separated(
                         itemBuilder: (context, index) => Text(
                           textDirection: TextDirection.rtl,
                           "${lines[index]}(${index+1})",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontFamily: "DTHULUTH",
-                            fontSize: 30
+                            fontSize: 30,
+                            color: Theme.of(context).colorScheme.onErrorContainer
                           ),
                         ),
                         itemCount: lines.length,
@@ -93,7 +96,7 @@ class _SuraDetailsState extends State<SuraDetails> {
 
   loadSuraContent(int index) async {
     String suraContent =  await rootBundle.loadString("assets/texts/${index+1}.txt");
-    lines = suraContent.split("\n");
+    lines = suraContent.trim().split("\n");
 
     lines.removeWhere((line) => line.trim().isEmpty); //to remove extra lines in end
 

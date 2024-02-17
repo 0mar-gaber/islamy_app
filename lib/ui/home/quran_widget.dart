@@ -36,19 +36,19 @@ class Quran extends StatelessWidget {
                   Container(
                     margin: const EdgeInsets.all(5),
                     height: 4,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("عدد الايات",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w400)),
-                      Text("اسم السورة",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w400)),
+                      Text("عدد الايات",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w400,color: Theme.of(context).colorScheme.onPrimary)),
+                      Text("اسم السورة",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w400,color: Theme.of(context).colorScheme.onPrimary)),
                     ],
                   ),
                   Container(
                     margin: const EdgeInsets.all(5),
                     height: 4,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: Theme.of(context).colorScheme.tertiary,
                   ),
                   Expanded(
                     child: ListView.builder(
@@ -65,9 +65,9 @@ class Quran extends StatelessWidget {
               ),
                 Center(
                     child: Container(
-                  margin: const EdgeInsets.only(top: 5),
-                  width: 5,
-                  color: Theme.of(context).colorScheme.primary,
+                      margin: const EdgeInsets.only(top: 5),
+                      width: 5,
+                      color: Theme.of(context).colorScheme.tertiary,
                 )
                 )
             ]),

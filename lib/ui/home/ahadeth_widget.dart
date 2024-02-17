@@ -13,17 +13,17 @@ class Ahadeth extends StatelessWidget {
           margin: EdgeInsets.only(top: MediaQuery.of(context).size.width*0.15),
           child: Column(
             children: [
-              Image(image: AssetImage("assets/image/ahadeth_image.png")),
+              const Image(image: AssetImage("assets/image/ahadeth_image.png")),
               Container(
                 margin: const EdgeInsets.all(5),
                 height: 4,
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.tertiary,
               ),
-              Text("الأحاديث",style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.06,fontWeight: FontWeight.w400)),
+              Text("الأحاديث",style: TextStyle(fontSize: MediaQuery.of(context).size.width*0.06,color: Theme.of(context).colorScheme.onPrimary,fontWeight: FontWeight.w400)),
               Container(
                 margin: const EdgeInsets.all(5),
                 height: 4,
-                color: Theme.of(context).colorScheme.primary,
+                color: Theme.of(context).colorScheme.tertiary,
               ),
               Expanded(
                 child: ListView.builder(
@@ -32,7 +32,7 @@ class Ahadeth extends StatelessWidget {
                         onTap:() {
                           Navigator.of(context).pushNamed(AhadethDetailsWidget.route,arguments: index);
                         },
-                        child: Container( margin: EdgeInsets.only(top: MediaQuery.of(context).size.width*0.03,bottom:MediaQuery.of(context).size.width*0.03), child: Text("${index+1} الحديث رقم ",textAlign: TextAlign.center,style: TextStyle(fontSize: 40,fontWeight: FontWeight.w900)))),
+                        child: Container( margin: EdgeInsets.only(top: MediaQuery.of(context).size.width*0.03,bottom:MediaQuery.of(context).size.width*0.03), child: Text("${index+1} الحديث رقم ",textAlign: TextAlign.center,style:  TextStyle(fontSize: 40,fontWeight: FontWeight.w900,color: Theme.of(context).colorScheme.onPrimary)))),
                     itemCount: 50
                 ),
               )
