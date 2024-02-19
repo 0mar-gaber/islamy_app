@@ -1,3 +1,15 @@
 {
-  "islamy":"Islamy"
+  "islamy":"Islamy",
+  "quran":"َquran",
+  "ahadeth":"Ahadeth",
+  "sebha":"sebha",
+  "radio":"radio",
+  "settings":"settings",
+  "suraName":"sura name",
+  "suraVerse":"sura verse",
+  "hadethNumber":"Hadeth number",
+  "numberofpraises":"Number of praises",
+  "holyQuranRadio":"Holy Quran Radio",
+  "language":"Language",
+  "theme":"Theme"
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islamy/theme_style/app_theme.dart';
+import 'package:islamy/providers/setting_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SuraDetails extends StatefulWidget {
   static const String route = "sura_details";
@@ -14,56 +17,53 @@ class _SuraDetailsState extends State<SuraDetails> {
 
   @override
   Widget build(BuildContext context) {
+    double width =  MediaQuery.of(context).size.width ;
+    double height =  MediaQuery.of(context).size.height ;
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
     SuraDetailsArgs sura = ModalRoute.of(context)?.settings.arguments as SuraDetailsArgs ;
     if(lines.isEmpty){
       loadSuraContent(sura.index);
     }
     return Container(
       decoration:  BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppTheme.isDark?"assets/image/darkback.png":"assets/image/background.png"),fit: BoxFit.fill)
+          image: DecorationImage(image: AssetImage(provider.theme==ThemeMode.dark?"assets/image/darkback.png":"assets/image/background.png"),fit: BoxFit.fill)
       ),
       child: Scaffold(
-        appBar: AppBar(title: const Text("Islamy")),
+        appBar: AppBar(title:  Text(AppLocalizations.of(context)!.islamy)),
         body: Center(
           child: Container(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.errorContainer,
               borderRadius: BorderRadius.circular(40)
             ),
-            width: MediaQuery.of(context).size.width*0.9,
-            height: MediaQuery.of(context).size.height*0.8,
+            width: width*0.9,
+            height: height*0.8,
             child: Container(
-              margin: EdgeInsets.all(MediaQuery.of(context).size.width*.07),
+              margin: EdgeInsets.all(width*.07),
               child: Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(sura.title,
                         style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width*0.07,
+                          fontSize: width*0.07,
                           fontWeight: FontWeight.w900,
                           color: Theme.of(context).colorScheme.onErrorContainer
-
                         ),
                       ),
-                      const SizedBox(width: 120,),
-                      Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        child:  CircleAvatar(
-                          backgroundColor: Theme.of(context).colorScheme.onErrorContainer,
-                          child:Icon(Icons.play_arrow,color: Theme.of(context).colorScheme.onSecondary,size: 33),
-                        ),
-                      ),
-                      const SizedBox(width: 50,),
+                      // CircleAvatar(
+                      //   backgroundColor: Theme.of(context).colorScheme.onErrorContainer,
+                      //   child:Icon(Icons.play_arrow,color: Theme.of(context).colorScheme.onSecondary,size: width*0.045),
+                      // ),
 
                     ],
                   ),
-                  Container(height: 3,color: Theme.of(context).colorScheme.tertiary,width:MediaQuery.of(context).size.width*.7),
+                  Container(height: height*0.003,color: Theme.of(context).colorScheme.tertiary,width:width*.7),
                   Expanded(
                     child: Container(
-                      padding:  EdgeInsets.only(top: MediaQuery.of(context).size.width*0.033),
-                      margin: EdgeInsets.only( right:MediaQuery.of(context).size.width*0.033 ,left: MediaQuery.of(context).size.width*0.033),
+                      padding:  EdgeInsets.only(top: height*0.02),
+                      margin: EdgeInsets.only( right:width*0.033 ,left: width*0.033),
                       child: lines.isNotEmpty
                       ?ListView.separated(
                         itemBuilder: (context, index) => Text(
@@ -71,12 +71,12 @@ class _SuraDetailsState extends State<SuraDetails> {
                           "${lines[index]}(${index+1})",
                           style: TextStyle(
                             fontFamily: "DTHULUTH",
-                            fontSize: 30,
+                            fontSize: width*0.05,
                             color: Theme.of(context).colorScheme.onErrorContainer
                           ),
                         ),
                         itemCount: lines.length,
-                        separatorBuilder: (BuildContext context, int index) =>const SizedBox(height: 5,),
+                        separatorBuilder: (BuildContext context, int index) => SizedBox(height: height*0.01,),
 
                       )
                       :const Center(child: CircularProgressIndicator(),),

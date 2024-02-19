@@ -7,14 +7,16 @@ class QuranNameVerse extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width =  MediaQuery.of(context).size.width ;
+    double height =  MediaQuery.of(context).size.height ;
     return Padding(
-      padding: const EdgeInsets.only(top: 20,bottom: 20),
+      padding:  EdgeInsets.all( height*0.02),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(verse,style:  TextStyle(fontSize: 30,fontWeight: FontWeight.w900,color: Theme.of(context).colorScheme.onPrimary,fontFamily: "KOUFIBD")),
-            Text(name, style:  TextStyle(fontSize: 30,fontWeight: FontWeight.w900,color: Theme.of(context).colorScheme.onPrimary,fontFamily: "KOUFIBD"),),
+            Text(verse,style:  TextStyle(fontSize: width*0.04,fontWeight: FontWeight.w900,color: Theme.of(context).colorScheme.onPrimary,fontFamily: "KOUFIBD")),
+            Text(name, style:  TextStyle(fontSize: width*0.04,fontWeight: FontWeight.w900,color: Theme.of(context).colorScheme.onPrimary,fontFamily: "KOUFIBD"),),
           ]
       ),
     );

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:islamy/providers/setting_provider.dart';
 import 'package:islamy/ui/home/quran_name_verse.dart';
 import 'package:islamy/ui/quran_details/sura_details_widgit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
 
 class Quran extends StatelessWidget {
   final List<String> suraNames = [
@@ -24,6 +28,9 @@ class Quran extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
+    double width =  MediaQuery.of(context).size.width ;
+    double height =  MediaQuery.of(context).size.height ;
     return Scaffold(
       body: Column(
         children: [
@@ -34,20 +41,20 @@ class Quran extends StatelessWidget {
                 Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.all(5),
-                    height: 4,
+                    margin:  EdgeInsets.only(top: height*0.002),
+                    height: height*0.003,
                     color: Theme.of(context).colorScheme.tertiary,
                   ),
                    Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("عدد الايات",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w400,color: Theme.of(context).colorScheme.onPrimary)),
-                      Text("اسم السورة",style: TextStyle(fontSize: 40,fontWeight: FontWeight.w400,color: Theme.of(context).colorScheme.onPrimary)),
+                      Text(AppLocalizations.of(context)!.suraVerse,style: TextStyle(fontSize: width*0.05,fontWeight: FontWeight.w400,color: Theme.of(context).colorScheme.onPrimary)),
+                      Text(AppLocalizations.of(context)!.suraName,style: TextStyle(fontSize: width*0.05,fontWeight: FontWeight.w400,color: Theme.of(context).colorScheme.onPrimary)),
                     ],
                   ),
                   Container(
-                    margin: const EdgeInsets.all(5),
-                    height: 4,
+                    margin:  EdgeInsets.only(top: height*0.002),
+                    height: height*0.003,
                     color: Theme.of(context).colorScheme.tertiary,
                   ),
                   Expanded(
@@ -65,8 +72,8 @@ class Quran extends StatelessWidget {
               ),
                 Center(
                     child: Container(
-                      margin: const EdgeInsets.only(top: 5),
-                      width: 5,
+                      margin:  EdgeInsets.only(top: height*0.003),
+                      width: width*0.005,
                       color: Theme.of(context).colorScheme.tertiary,
                 )
                 )

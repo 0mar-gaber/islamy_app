@@ -1,3 +1,15 @@
 {
-  "islamy":"اسلامي"
+  "islamy":"اسلامي",
+  "quran":"قراءن",
+  "ahadeth":"احاديث",
+  "sebha":"سبحة",
+  "radio":"راديو",
+  "settings":"اعدادات",
+  "suraName":"اسم السورة",
+  "suraVerse":"عدد الايات",
+  "hadethNumber":"حديث رقم",
+  "numberofpraises":"عدد التسبيحات",
+  "holyQuranRadio":"إذاعة القرآن الكريم",
+  "language":"اللغة",
+  "theme":"السمة"
 }

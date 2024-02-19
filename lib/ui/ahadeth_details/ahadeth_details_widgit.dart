@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islamy/theme_style/app_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/setting_provider.dart';
 
 
 class AhadethDetailsWidget extends StatefulWidget {
@@ -15,6 +18,9 @@ class AhadethDetailsWidget extends StatefulWidget {
 class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
   @override
   Widget build(BuildContext context) {
+    SettingsProvider provider = Provider.of<SettingsProvider>(context);
+    double width =  MediaQuery.of(context).size.width ;
+    double height =  MediaQuery.of(context).size.height ;
     Object? index =  ModalRoute.of(context)?.settings.arguments as int;
     int index2 =index as int;
     if(ahadeth.isEmpty){
@@ -24,26 +30,26 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
 
     return Container(
       decoration:  BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppTheme.isDark?"assets/image/darkback.png":"assets/image/background.png"),fit: BoxFit.fill)
+          image: DecorationImage(image: AssetImage(provider.theme==ThemeMode.dark?"assets/image/darkback.png":"assets/image/background.png"),fit: BoxFit.fill)
       ),
       child: Scaffold(
-        appBar: AppBar(title: const Text("Islamy")),
+        appBar: AppBar(title:  Text(AppLocalizations.of(context)!.islamy)),
         body: Center(
           child: Container(
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.errorContainer,
                 borderRadius: BorderRadius.circular(40)
             ),
-            width: MediaQuery.of(context).size.width*0.9,
+            width: width*0.9,
             height: MediaQuery.of(context).size.height*0.8,
             child: Container(
-              margin: EdgeInsets.all(MediaQuery.of(context).size.width*.07),
+              margin: EdgeInsets.all(width*.07),
               child: Column(
                 children: [
                   Text(
                     titles[index].trim().toString(),
                     style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width*0.05,
+                      fontSize: width*0.05,
                       fontWeight: FontWeight.w900,
                       fontFamily: "KOUFIBD",
                       color: Theme.of(context).colorScheme.onErrorContainer
@@ -51,12 +57,12 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
                     ),
                   ),
                   SizedBox(height: 10,),
-                  Container(height: 3,color: Theme.of(context).colorScheme.onErrorContainer,width:MediaQuery.of(context).size.width*.7),
+                  Container(height: height*0.003,color: Theme.of(context).colorScheme.tertiary,width:width*.7),
                   SizedBox(height: 10,),
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.only(top: 5),
-                      margin: EdgeInsets.only( right:MediaQuery.of(context).size.width*0.033 ,left: MediaQuery.of(context).size.width*0.033),
+                      margin: EdgeInsets.only( right:width*0.033 ,left: width*0.033),
                       child: ahadeth.isNotEmpty
                           ?ListView.separated(
                         itemBuilder: (context, index) => Text(
