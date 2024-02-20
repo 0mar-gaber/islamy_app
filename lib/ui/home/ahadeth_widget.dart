@@ -16,9 +16,8 @@ class Ahadeth extends StatelessWidget {
           margin: EdgeInsets.only(top: height*0.05),
           child: Column(
             children: [
-              const Image(image: AssetImage("assets/image/ahadeth_image.png")),
+              Image(image: AssetImage("assets/image/ahadeth_image.png"),width: width*0.6,fit: BoxFit.fitWidth),
               Container(
-                margin:  EdgeInsets.only(top:width*.07),
                 height: height*0.003,
                 color: Theme.of(context).colorScheme.tertiary,
               ),

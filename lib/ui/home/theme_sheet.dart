@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islamy/theme_style/app_theme.dart';
 import 'package:provider/provider.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../providers/setting_provider.dart';
 
 class ThemeSheet extends StatefulWidget {
@@ -29,18 +29,24 @@ class _ThemeSheetState extends State<ThemeSheet> {
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              selectedTheme(provider.theme==ThemeMode.light?"Light":"Dark"),
+              selectedTheme(provider.theme==ThemeMode.light?AppLocalizations.of(context)!.light:AppLocalizations.of(context)!.dark),
               SizedBox(height: height*0.03),
               InkWell(
-                onTap: () {
-                  if(provider.theme==ThemeMode.light){
-                    provider.changeAppThem(ThemeMode.dark);
-                  }else{
-                    provider.changeAppThem(ThemeMode.light);
-                  }
+                onTap: () async {
                   Navigator.pop(context);
+                  SharedPreferences preferences = await SharedPreferences.getInstance();
+
+                  if(provider.theme==ThemeMode.light){
+                    provider.changeAppTheme(true);
+                    preferences.setBool("is dark", true);
+                  }else{
+                    provider.changeAppTheme(false);
+                    preferences.setBool("is dark", false);
+
+                  }
+
                 },
-                child: unSelectedTheme(provider.theme==ThemeMode.dark?"Light":"Dark"),
+                child: unSelectedTheme(provider.theme==ThemeMode.dark?AppLocalizations.of(context)!.light:AppLocalizations.of(context)!.dark),
 
               )
             ]

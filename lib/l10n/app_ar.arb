@@ -11,5 +11,7 @@
   "numberofpraises":"عدد التسبيحات",
   "holyQuranRadio":"إذاعة القرآن الكريم",
   "language":"اللغة",
-  "theme":"السمة"
+  "theme":"السمة",
+  "dark":"مظلم",
+  "light":"مضيئ"
 }

@@ -14,7 +14,7 @@ class Radioo extends StatelessWidget {
           children: [
             Container(
                 margin: EdgeInsets.only(top: width*0.4),
-                child: Image(image: AssetImage("assets/image/radio_image.png"))),
+                child: Image(image: AssetImage("assets/image/radio_image.png"),width: width*0.7,fit: BoxFit.fitWidth)),
             SizedBox(height: height*0.06,),
             Text(AppLocalizations.of(context)!.holyQuranRadio,
               style: TextStyle(

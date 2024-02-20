@@ -11,5 +11,7 @@
   "numberofpraises":"Number of praises",
   "holyQuranRadio":"Holy Quran Radio",
   "language":"Language",
-  "theme":"Theme"
+  "theme":"Theme",
+  "dark":"Dark",
+  "light":"Light"
 }

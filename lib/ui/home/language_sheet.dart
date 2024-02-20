@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../providers/setting_provider.dart';
 
@@ -32,14 +33,18 @@ class _LanguageSheetState extends State<LanguageSheet> {
             selectedLanguage(provider.language=='en'?"English":"العريبة"),
             SizedBox(height: height*0.03),
             InkWell(
-              onTap: () {
+              onTap: () async {
+                Navigator.pop(context);
+                SharedPreferences preferences = await SharedPreferences.getInstance();
                 if(provider.language=="ar"){
-                  provider.changeAppLanguage(provider.language="en");
-                }else {
-                  provider.changeAppLanguage(provider.language="ar");
-                }
+                  provider.changeAppLanguage("en");
+                  preferences.setString("language", "en");
 
-                print(provider.language);
+                }else {
+                  provider.changeAppLanguage("ar");
+                  preferences.setString("language", "ar");
+
+                }
               },
               child:  unSelectedLanguage(provider.language=='ar'?"English":"العريبة"),
 

@@ -7,12 +7,29 @@ import 'package:islamy/ui/home/home_screen.dart';
 import 'package:islamy/ui/quran_details/sura_details_widgit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
-void main(){
-  runApp(ChangeNotifierProvider(
-      create: (context)=>SettingsProvider(),
+Future<void> main()  async {
+  WidgetsFlutterBinding.ensureInitialized();
+  late bool dark  ;
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  if(!preferences.containsKey("is dark")){
+    print("false");
+    preferences.setBool("is dark", false);
+    dark = false ;
+  }else{
+     dark = !preferences.getBool("is dark")!;
+     print("dark : $dark");
+
+  }
+
+  // String? oldLanguage = preferences.get("language") as String?;
+  runApp( ChangeNotifierProvider(
+      create: await(context)=> SettingsProvider()..changeAppTheme(dark!),
+        // ..changeAppLanguage(oldLanguage!),
       child: const IslamyApp()));
+
 }
 class IslamyApp extends StatelessWidget {
   const IslamyApp({super.key});
@@ -33,7 +50,7 @@ class IslamyApp extends StatelessWidget {
         Locale('ar'), // arabic
       ],
       locale:  Locale(provider.language),
-      theme: AppTheme.lightTheme,
+      theme:AppTheme.lightTheme ,
       darkTheme: AppTheme.darkTheme,
       themeMode: provider.theme,
       routes: {
@@ -44,4 +61,5 @@ class IslamyApp extends StatelessWidget {
       initialRoute: HomeScreen.route,
     );
   }
+
 }

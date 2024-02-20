@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islamy/theme_style/app_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -48,14 +47,14 @@ class _SebhaState extends State<Sebha> {
           children: [
             Container(
               margin: EdgeInsets.only(left:width*0.08,top:  height*0.1),
-                child:  Image(image: AssetImage(provider.theme==ThemeMode.dark?"assets/image/dark_head_of_seb7a.png":"assets/image/head_sebha_logo.png"))),
+                child:  Image(image: AssetImage(provider.theme==ThemeMode.dark?"assets/image/dark_head_of_seb7a.png":"assets/image/head_sebha_logo.png"),width: width*0.1,fit: BoxFit.fitWidth)),
             GestureDetector(
               onTap: () {
                 onSeb7aClicked();
               },
               child: Transform.rotate(
                 angle: rotateAngle * (3.14/1800),
-                child:  Image(image: AssetImage(provider.theme==ThemeMode.dark?"assets/image/dark_body_of_seb7a.png":"assets/image/body_of_seb7a.png")),
+                child:  Image(image: AssetImage(provider.theme==ThemeMode.dark?"assets/image/dark_body_of_seb7a.png":"assets/image/body_of_seb7a.png"),width: width*0.4,fit: BoxFit.fitWidth),
               ),
             ),
             SizedBox(height: height*0.06,),

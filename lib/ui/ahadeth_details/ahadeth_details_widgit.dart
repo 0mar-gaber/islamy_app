@@ -33,7 +33,7 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
           image: DecorationImage(image: AssetImage(provider.theme==ThemeMode.dark?"assets/image/darkback.png":"assets/image/background.png"),fit: BoxFit.fill)
       ),
       child: Scaffold(
-        appBar: AppBar(title:  Text(AppLocalizations.of(context)!.islamy)),
+        appBar: AppBar(title:  Text(AppLocalizations.of(context)!.islamy,style: TextStyle(fontSize: height*0.05)),iconTheme: IconThemeData(size: height*0.05,color: Theme.of(context).colorScheme.onBackground)),
         body: Center(
           child: Container(
             decoration: BoxDecoration(
@@ -42,48 +42,48 @@ class _AhadethDetailsWidgetState extends State<AhadethDetailsWidget> {
             ),
             width: width*0.9,
             height: MediaQuery.of(context).size.height*0.8,
-            child: Container(
-              margin: EdgeInsets.all(width*.07),
-              child: Column(
-                children: [
-                  Text(
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: width*.05),
+                  child: Text(
                     titles[index].trim().toString(),
                     style: TextStyle(
-                      fontSize: width*0.05,
+                      fontSize: width*0.07,
                       fontWeight: FontWeight.w900,
                       fontFamily: "KOUFIBD",
                       color: Theme.of(context).colorScheme.onErrorContainer
 
                     ),
                   ),
-                  SizedBox(height: 10,),
-                  Container(height: height*0.003,color: Theme.of(context).colorScheme.tertiary,width:width*.7),
-                  SizedBox(height: 10,),
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.only(top: 5),
-                      margin: EdgeInsets.only( right:width*0.033 ,left: width*0.033),
-                      child: ahadeth.isNotEmpty
-                          ?ListView.separated(
-                        itemBuilder: (context, index) => Text(
-                          textDirection: TextDirection.rtl,
-                          "${content[index2]}",
-                          style:  TextStyle(
-                              fontFamily: "DTHULUTH",
-                              fontSize: 40,
-                              fontWeight: FontWeight.w600,
-                              color: Theme.of(context).colorScheme.onErrorContainer
-                          ),
+                ),
+                SizedBox(height: 10,),
+                Container(height: height*0.003,color: Theme.of(context).colorScheme.tertiary,width:width*.7),
+                SizedBox(height: 10,),
+                Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.only(top: 5),
+                    margin: EdgeInsets.only( right:width*0.033 ,left: width*0.033),
+                    child: ahadeth.isNotEmpty
+                        ?ListView.separated(
+                      itemBuilder: (context, index) => Text(
+                        textDirection: TextDirection.rtl,
+                        "${content[index2]}",
+                        style:  TextStyle(
+                            fontFamily: "DTHULUTH",
+                            fontSize: width*0.07,
+                            fontWeight: FontWeight.w600,
+                            color: Theme.of(context).colorScheme.onErrorContainer
                         ),
-                        itemCount: 1,
-                        separatorBuilder: (BuildContext context, int index) =>const SizedBox(height: 5,),
+                      ),
+                      itemCount: 1,
+                      separatorBuilder: (BuildContext context, int index) =>const SizedBox(height: 5,),
 
-                      )
-                          :const Center(child: CircularProgressIndicator(),),
-                    ),
-                  )
-                ],
-              ),
+                    )
+                        :const Center(child: CircularProgressIndicator(),),
+                  ),
+                )
+              ],
             ) ,
 
           ),

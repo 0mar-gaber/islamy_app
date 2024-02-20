@@ -62,7 +62,7 @@ class Settings extends StatelessWidget {
                       border: Border.all(color: Theme.of(context).colorScheme.tertiary),
                       borderRadius: BorderRadius.circular(15)
                   ),
-                  child:  Center(child: Text(provider.theme==ThemeMode.dark?"Dark":"Light",textAlign: TextAlign.center,style: TextStyle(fontSize:width*0.04,fontWeight: FontWeight.bold),))
+                  child:  Center(child: Text(provider.theme==ThemeMode.dark?AppLocalizations.of(context)!.dark:AppLocalizations.of(context)!.light,textAlign: TextAlign.center,style: TextStyle(fontSize:width*0.04,fontWeight: FontWeight.bold),))
               ),
             ),
           ],

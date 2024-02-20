@@ -42,17 +42,17 @@ class _HomeScreenState extends State<HomeScreen> {
         image: DecorationImage(image: AssetImage(provider.theme==ThemeMode.dark?"assets/image/darkback.png":"assets/image/background.png"),fit: BoxFit.fill)
       ),
       child: Scaffold(
-        appBar: AppBar(title:  Text(AppLocalizations.of(context)!.islamy)),
+        appBar: AppBar(title:  Text(AppLocalizations.of(context)!.islamy,style: TextStyle(fontSize: height*0.05))),
         body: navWidgets[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentIndex,
 
             items: [
-              BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/icons/icon_quran.png"),),label: AppLocalizations.of(context)!.quran,backgroundColor: Theme.of(context).colorScheme.primary),
-              BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/icons/icon_hadeth.png"),),label:AppLocalizations.of(context)!.ahadeth,backgroundColor: Theme.of(context).colorScheme.primary),
-              BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/icons/icon_sebha.png"),),label: AppLocalizations.of(context)!.sebha,backgroundColor: Theme.of(context).colorScheme.primary),
-              BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/icons/icon_radio.png"),),label: AppLocalizations.of(context)!.radio,backgroundColor: Theme.of(context).colorScheme.primary),
-              BottomNavigationBarItem(icon: Icon(Icons.settings),label: AppLocalizations.of(context)!.settings,backgroundColor: Theme.of(context).colorScheme.primary),
+              BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/icons/icon_quran.png"),size: width*0.07),label: AppLocalizations.of(context)!.quran,backgroundColor: Theme.of(context).colorScheme.primary),
+              BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/icons/icon_hadeth.png"),size: width*0.07),label:AppLocalizations.of(context)!.ahadeth,backgroundColor: Theme.of(context).colorScheme.primary),
+              BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/icons/icon_sebha.png"),size: width*0.07),label: AppLocalizations.of(context)!.sebha,backgroundColor: Theme.of(context).colorScheme.primary),
+              BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/icons/icon_radio.png"),size: width*0.07),label: AppLocalizations.of(context)!.radio,backgroundColor: Theme.of(context).colorScheme.primary),
+              BottomNavigationBarItem(icon: Icon(Icons.settings,size:  width*0.07),label: AppLocalizations.of(context)!.settings,backgroundColor: Theme.of(context).colorScheme.primary),
         ],
           onTap: onTab,
         ),

@@ -34,7 +34,7 @@ class Quran extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Image.asset("assets/image/quran_image.png"),
+          Image.asset("assets/image/quran_image.png",width: width*0.4,fit: BoxFit.fitWidth),
           Expanded(
             child: Stack(
               children: [

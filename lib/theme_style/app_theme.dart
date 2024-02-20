@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class AppTheme{
 
-  static bool isDark = true ;
 
   static const Color lightPrimary = Color.fromRGBO(183, 147, 95, 1);
   static const Color darkPrimary = Color.fromRGBO(20, 26, 46, 1.0);
@@ -41,13 +40,7 @@ class AppTheme{
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.black,
-        selectedIconTheme: IconThemeData(
-            size: 45
-        ),
         unselectedItemColor: Colors.white,
-        unselectedIconTheme: IconThemeData(
-            size: 40
-        ),
 
       )
   );

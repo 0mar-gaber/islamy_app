@@ -29,7 +29,7 @@ class _SuraDetailsState extends State<SuraDetails> {
           image: DecorationImage(image: AssetImage(provider.theme==ThemeMode.dark?"assets/image/darkback.png":"assets/image/background.png"),fit: BoxFit.fill)
       ),
       child: Scaffold(
-        appBar: AppBar(title:  Text(AppLocalizations.of(context)!.islamy)),
+        appBar: AppBar(title:  Text(AppLocalizations.of(context)!.islamy,style: TextStyle(fontSize: height*0.05)),iconTheme: IconThemeData(size: height*0.05,color: Theme.of(context).colorScheme.onBackground)),
         body: Center(
           child: Container(
             decoration: BoxDecoration(
@@ -38,17 +38,17 @@ class _SuraDetailsState extends State<SuraDetails> {
             ),
             width: width*0.9,
             height: height*0.8,
-            child: Container(
-              margin: EdgeInsets.all(width*.07),
-              child: Column(
-                children: [
-                  Row(
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top:width*.05),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(sura.title,
                         style: TextStyle(
                           fontSize: width*0.07,
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w700,
                           color: Theme.of(context).colorScheme.onErrorContainer
                         ),
                       ),
@@ -59,31 +59,33 @@ class _SuraDetailsState extends State<SuraDetails> {
 
                     ],
                   ),
-                  Container(height: height*0.003,color: Theme.of(context).colorScheme.tertiary,width:width*.7),
-                  Expanded(
-                    child: Container(
-                      padding:  EdgeInsets.only(top: height*0.02),
-                      margin: EdgeInsets.only( right:width*0.033 ,left: width*0.033),
-                      child: lines.isNotEmpty
-                      ?ListView.separated(
-                        itemBuilder: (context, index) => Text(
-                          textDirection: TextDirection.rtl,
-                          "${lines[index]}(${index+1})",
-                          style: TextStyle(
-                            fontFamily: "DTHULUTH",
-                            fontSize: width*0.05,
-                            color: Theme.of(context).colorScheme.onErrorContainer
-                          ),
-                        ),
-                        itemCount: lines.length,
-                        separatorBuilder: (BuildContext context, int index) => SizedBox(height: height*0.01,),
+                ),
+                Container(height: height*0.003,color: Theme.of(context).colorScheme.tertiary,width:width*.7),
+                Expanded(
+                  child: Container(
+                    padding:  EdgeInsets.only(top: height*0.02),
+                    margin: EdgeInsets.only( right:width*0.033 ,left: width*0.033),
+                    child: lines.isNotEmpty
+                    ?ListView.separated(
+                      itemBuilder: (context, index) => Text(
+                        textDirection: TextDirection.rtl,
+                        "${lines[index]}(${index+1})",
+                        style: TextStyle(
+                          fontFamily: "DTHULUTH",
+                          fontSize: width*0.07,
+                            fontWeight: FontWeight.w700,
 
-                      )
-                      :const Center(child: CircularProgressIndicator(),),
-                    ),
-                  )
-                ],
-              ),
+                            color: Theme.of(context).colorScheme.onErrorContainer
+                        ),
+                      ),
+                      itemCount: lines.length,
+                      separatorBuilder: (BuildContext context, int index) => SizedBox(height: height*0.01,),
+
+                    )
+                    :const Center(child: CircularProgressIndicator(),),
+                  ),
+                )
+              ],
             ) ,
 
           ),
